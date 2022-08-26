@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+
+
+
+ vmq:
+    restart: always
+    image: vernemq/vernemq:1.11.0
+    container_name: vernemq
+    ports:
+      - "1883:1883"
+        #- "8888:8888"
+        #- "8883:8883"
+    environment:
+      DOCKER_VERNEMQ_ALLOW_ANONYMOUS: "on"
+      DOCKER_VERNEMQ_ACCEPT_EULA: "yes"
+      #DOCKER_VERNEMQ_USER_IUMQTT: "infinite@uptime"
+      #DOCKER_VERNEMQ_LISTENER.ssl.default: "0.0.0.0:8883"
+      #DOCKER_VERNEMQ_LISTENER.ssl.cafile: "/etc/vernemq/certificates/mqtt-broker/mqtt-ca.crt"
+      #DOCKER_VERNEMQ_LISTENER.ssl.certfile: "/etc/vernemq/certificates/mqtt-broker/uatjapan-mqtt-idap.infinite-uptime.com.crt"
+      #DOCKER_VERNEMQ_LISTENER.ssl.keyfile: "/etc/vernemq/certificates/mqtt-broker/uatjapan-mqtt-idap.infinite-uptime.com.key"
+    volumes:
+      - "/home/ubuntu/iu/idap/certificates/platform-certificates:/etc/vernemq/certificates"
